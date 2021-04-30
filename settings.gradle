@@ -1,2 +1,3 @@
 rootProject.name = 'StudySpringboot'
+include 'src'
 
