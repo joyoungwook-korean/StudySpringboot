@@ -9,6 +9,10 @@ var index = {
             _this.update();
         });
 
+        $('#btn-delete').on('click', function () {
+            _this.delete();
+        });
+
     },
     save: function () {
         var data = {
@@ -53,6 +57,24 @@ var index = {
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
+    },
+
+    delete: function () {
+        var id = $('#id').val();
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/v1/posts/'+id,
+            dataType: 'json',
+            contentType: 'appilcation/json; charset=utf-8'})
+            .done(function () {
+                alert('글이 삭제 되었습니다.');
+                window.location.href='/';
+
+            }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+
     }
 };
 index.init();
